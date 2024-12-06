@@ -3,9 +3,14 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 
 export default function ProfilePage() {
   const router = useRouter();
+  const [user, setUser] = React.useState({
+    username: "",
+    email: "",
+  });
   const logout = async () => {
     try {
       await axios.get("/api/users/logout");
@@ -15,6 +20,17 @@ export default function ProfilePage() {
       console.log(error.message);
     }
   };
+  const getUserDetails = async () => {
+    const response = await axios.get("/api/users/me");
+    const userData = response.data.data;
+    setUser({
+      username: userData.username,
+      email: userData.email,
+    });
+  };
+  useEffect(() => {
+    getUserDetails();
+  }, [user.email]);
   return (
     <div className="min-h-[90vh] flex justify-center items-center ">
       <div className="my-10 flex flex-col gap-4 rounded-lg p-4 text-white w-96 shadow-[0_0_10px_black] ">
@@ -26,11 +42,11 @@ export default function ProfilePage() {
           className="m-auto rounded-full"
         />
         <h3 className="text-xl font-semibold text-center capitalize">
-          Maharani Jhashi
+          {user.username}
         </h3>
         <div>
           <div className="flex justify-between items-center gap-2">
-            <p>Email: </p> <p>email@gmail.com</p>
+            <p>Email: </p> <p>{user.email}</p>
           </div>
         </div>
         <div className="flex justify-between items-center gap-2">
