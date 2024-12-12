@@ -108,12 +108,12 @@ export default function LoginPage() {
                     </label>
                   </div>
                 </div>
-                <a
-                  href="#"
+                <Link
+                  href="forgotpassword"
                   className="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
                 >
                   Forgot password?
-                </a>
+                </Link>
               </div>
               <button
                 disabled={buttonDisabled}
