@@ -9,26 +9,27 @@ export default function VerifyEmailPage() {
   const [verified, setVerified] = React.useState(false);
   const [error, setError] = React.useState(false);
 
-  const verifyUserEmail = async () => {
-    try {
-      await axios.post("/api/users/verifyemail", { token });
-      setVerified(true);
-    } catch (error: unknown) {
-      setError(true);
-      if (error instanceof Error) {
-        console.log(error.message);
-      } else {
-        console.log("An unknown error occurred");
-      }
-    }
-  };
+  
 
   useEffect(() => {
     const urlToken = window.location.search.split("=")[1];
     setToken(urlToken || "");
-  });
+  }, []);
 
   useEffect(() => {
+    const verifyUserEmail = async () => {
+      try {
+        await axios.post("/api/users/verifyemail", { token });
+        setVerified(true);
+      } catch (error: unknown) {
+        setError(true);
+        if (error instanceof Error) {
+          console.log(error.message);
+        } else {
+          console.log("An unknown error occurred");
+        }
+      }
+    };
     if (token.length > 0) {
       verifyUserEmail();
     }
