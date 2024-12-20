@@ -11,8 +11,12 @@ export default function ForgotPasswordPage() {
       setLoading(true);
       await axios.post("/api/users/forgotpassword", { email });
       setIsSent(true);
-    } catch (error: any) {
-      console.log(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      } else {
+        console.log("An unknown error occurred");
+      }
     }
   };
   return (

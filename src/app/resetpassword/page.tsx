@@ -18,8 +18,12 @@ export default function ResetPasswordPage() {
         token,
       });
       router.push("/login");
-    } catch (error: any) {
-      console.log(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      } else {
+        console.log("An unknown error occurred");
+      }
     }
   };
   useEffect(() => {

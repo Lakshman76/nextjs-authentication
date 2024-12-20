@@ -19,8 +19,12 @@ export default function SignupPage() {
       const response = await axios.post("/api/users/signup", user);
       console.log("User created successfully", response.data);
       setIsSignedup(true);
-    } catch (error: any) {
-      console.log("Signup failed", error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      } else {
+        console.log("An unknown error occurred");
+      }
     } finally {
       setLoading(false);
     }

@@ -9,8 +9,9 @@ export const getDataFromToken = (request: NextRequest) => {
 
         return decodedToken;
 
-    } catch (error: any) {
-        throw new Error(error.message);
+    } catch (error: unknown) {
+        const errorMessage = error instanceof Error ? error.message : "An unknown error occurred";
+        throw new Error(errorMessage);
     }
 
 }

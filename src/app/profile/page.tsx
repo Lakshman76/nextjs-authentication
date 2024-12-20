@@ -16,8 +16,12 @@ export default function ProfilePage() {
       await axios.get("/api/users/logout");
       console.log("Logout successful");
       router.push("/login");
-    } catch (error: any) {
-      console.log(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      } else {
+        console.log("An unknown error occurred");
+      }
     }
   };
   const getUserDetails = async () => {
