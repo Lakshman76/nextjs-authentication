@@ -30,7 +30,9 @@ export default function ForgotPasswordPage() {
         ) : (
           <div className="max-w-md min-w-96 flex flex-col gap-8 p-6 rounded-lg text-white shadow-[0_0_10px_black] ">
             {loading ? (
-              <p className="text-center text-xl font-semibold ">Loading...</p>
+              <p className="text-center text-xl font-semibold ">
+                Please wait Loading...
+              </p>
             ) : (
               <h1 className="text-3xl text-center font-bold">
                 please provide your email
@@ -43,7 +45,7 @@ export default function ForgotPasswordPage() {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-yellow-600 focus:border-yellow-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
               placeholder="name@company.com"
               required
             />

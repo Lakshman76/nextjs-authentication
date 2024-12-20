@@ -33,12 +33,12 @@ export default function ProfilePage() {
   }, [user.email]);
   return (
     <div className="min-h-[90vh] flex justify-center items-center ">
-      <div className="my-10 flex flex-col gap-4 rounded-lg p-4 text-white w-96 shadow-[0_0_10px_black] ">
+      <div className="my-10 flex flex-col gap-4 rounded-lg p-4 text-white w-96 shadow-[0_0_10px_black] overflow-hidden">
         <Image
           src="/profile.png"
           alt="user profile"
-          width={150}
-          height={200}
+          width={200}
+          height={150}
           className="m-auto rounded-full"
         />
         <h3 className="text-xl font-semibold text-center capitalize">
