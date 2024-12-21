@@ -9,11 +9,11 @@ export default function VerifyEmailPage() {
   const [verified, setVerified] = React.useState(false);
   const [error, setError] = React.useState(false);
 
-  
-
   useEffect(() => {
-    const urlToken = window.location.search.split("=")[1];
-    setToken(urlToken || "");
+    const urlToken = new URLSearchParams(window.location.search).get("token");
+    if (urlToken) {
+      setToken(decodeURIComponent(urlToken));
+    }
   }, []);
 
   useEffect(() => {
